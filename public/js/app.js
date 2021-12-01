@@ -27,8 +27,8 @@ form.addEventListener("submit", function (e) {
     item.classList.add("message-container");
     text.classList.add("sent-message");
     tag.classList.add("sent-name");
-    tag.textContent = "You";
     text.textContent = input.value;
+    tag.textContent = "You · " + new Date().toLocaleTimeString().substr(0,5);
     item.appendChild(tag);
     item.appendChild(text);
     messages.appendChild(item);
