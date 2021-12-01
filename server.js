@@ -17,8 +17,12 @@ app.get("/chat.html", (req, res) => {
   res.sendFile(__dirname + "/public/chat.html");
 });
 
-server.listen(3000, () => {
-  console.log("Listening on 3000");
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+server.listen(port, () => {
+  console.log(`Listening on ${port}`);
 });
 //
 
