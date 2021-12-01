@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <script
+      src="https://kit.fontawesome.com/164d738bce.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Chat App</title>
+  </head>
+
+  <body>
+    <section class="side-bar">
+      <header>Online <a href="http://localhost:3000/" target="_blank">+</a></header>
+      <ul id="online"></ul>
+      
+    </section>
+    <main>
+      <div class="chat-page">
+        <ul id="messages"></ul>
+      </div>
+      <form id="input-bar" action="">
+        <input
+          autocomplete="off"
+          type="text"
+          name="input"
+          placeholder="Type..."
+          id="input"
+        /><br />
+        <button type="submit" value="Send" id="send-btn">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </form>
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
