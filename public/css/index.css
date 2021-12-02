@@ -315,6 +315,7 @@ h1 {
   #input-bar {
     width: 90vw;
     height: fit-content;
+    padding: 5px 0;
   }
   #input {
     width: 70vw;
