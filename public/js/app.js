@@ -64,7 +64,7 @@ socket.on("connect-message", (data) => {
   name.textContent = data.online;
   messages.appendChild(item);
   online.appendChild(name);
-  window.scrollTo(0, document.body.scrollHeight);
+  window.scrollTo(0, 0);
 });
 
 // update the display of online users
