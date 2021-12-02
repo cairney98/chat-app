@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Sansita+Swashed:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Sansita+Swashed:wght@600&display=swap");
 html {
   scroll-behavior: smooth;
 }
@@ -85,8 +85,7 @@ h1 {
   padding: 1rem;
   margin-bottom: 1rem;
   color: #fdfdfd;
-    font-size: 1.1rem;
-
+  font-size: 1.1rem;
 }
 .side-bar p {
   padding: 10px 0;
@@ -103,18 +102,15 @@ h1 {
 
 .side-bar a {
   text-decoration: none;
-  padding: 0px 6px 2px 6px;
   margin-left: 1rem;
   border-radius: 100%;
-  border: solid 1px rgb(196, 196, 241);
   background: none;
   color: rgb(226, 226, 226);
   transition: 0.1s;
   cursor: pointer;
 }
 .side-bar a:hover {
-  background: rgb(196, 196, 241);
-  color: rgb(39, 39, 39);
+  color: rgb(255, 255, 255);
 }
 
 /* CHAT PAGE */
@@ -249,13 +245,10 @@ h1 {
   transition: all 0.2s;
   margin-top: 2px;
 }
-#send-btn:hover {
-  background: rgb(247, 119, 97);
-}
+
 #send-btn:active {
   transform: scale(80%);
 }
-
 
 /* SCROLLBAR*/
 /* Firefox */
@@ -279,10 +272,16 @@ h1 {
   border: 3px none #ffffff;
 }
 
-
 /* MOBILE VERSION */
-
+@media screen and (max-height: 480px) {
+  #send-btn {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+  }
+}
 @media screen and (max-width: 600px) {
+
+  
   body {
     flex-direction: column;
     overflow-x: hidden;
@@ -297,18 +296,22 @@ h1 {
     margin-left: 1rem;
     margin-bottom: 0.75rem;
   }
+  
   .chat-page {
     width: 100vw;
   }
-#input-bar {
-  width: 90vw;
-}
-  #send-btn {
-    font-size: 0.8rem;
-    padding: 0.6rem;
+  .connection-message {
+    padding: 0;
+  }
+  #input-bar {
+    width: 90vw;
+  }
+  #input {
+    width: 70vw;
   }
 
+
   *::-webkit-scrollbar {
- display: none;
-}
+    display: none;
+  }
 }
