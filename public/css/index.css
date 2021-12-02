@@ -5,6 +5,12 @@ html {
 * {
   margin: 0;
 }
+*:focus {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
 body {
   font-family: "Nunito";
   font-weight: 500;
