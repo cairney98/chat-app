@@ -292,7 +292,7 @@ h1 {
   }
   .side-bar {
     width: 100vw;
-    height: fit-content;
+    height: 15vh;
   }
   .side-bar ul {
     flex-direction: row;
@@ -300,10 +300,13 @@ h1 {
     margin-left: 1rem;
     margin-bottom: 0.75rem;
   }
+  .side-bar p {
+    padding: 0;
+  }
 
   .chat-page {
     width: 100vw;
-    height: 68vh;
+    height: 75vh;
   }
   .connection-message {
     padding: 0;
@@ -311,6 +314,7 @@ h1 {
   }
   #input-bar {
     width: 90vw;
+    height: 10vh;
   }
   #input {
     width: 70vw;
