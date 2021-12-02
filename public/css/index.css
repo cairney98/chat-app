@@ -6,10 +6,10 @@ html {
   margin: 0;
 }
 *:focus {
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
 }
 body {
   font-family: "Nunito";
@@ -285,9 +285,7 @@ h1 {
     padding: 0.6rem;
   }
 }
-@media screen and (max-width: 600px) {
-
-  
+@media screen and (max-width: 500px) {
   body {
     flex-direction: column;
     overflow-x: hidden;
@@ -302,12 +300,14 @@ h1 {
     margin-left: 1rem;
     margin-bottom: 0.75rem;
   }
-  
+
   .chat-page {
     width: 100vw;
+    height: 68vh;
   }
   .connection-message {
     padding: 0;
+    padding-top: 6rem;
   }
   #input-bar {
     width: 90vw;
@@ -315,7 +315,6 @@ h1 {
   #input {
     width: 70vw;
   }
-
 
   *::-webkit-scrollbar {
     display: none;
