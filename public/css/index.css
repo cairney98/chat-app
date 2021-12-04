@@ -21,9 +21,13 @@ main {
   display: flex;
   flex-direction: column;
   margin: 0;
+  flex-grow: 1;
 }
 ul {
   padding: 0;
+}
+li {
+  list-style: none;
 }
 h1 {
   font-family: "Sansita Swashed";
@@ -38,7 +42,7 @@ h1 {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: #e63946;
+  background: linear-gradient(#ff3f4f,#bb202d);
   color: white;
 }
 
@@ -77,33 +81,49 @@ h1 {
 
 /* SIDE BAR */
 .side-bar {
-  background: #6e93aa;
+  background: linear-gradient(#fa3c4c,#bb202d) ;
   height: 100vh;
-  width: 30vw;
   display: flex;
   flex-direction: column;
+  width: fit-content;
 }
 .side-bar header {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background: #2e4361;
   padding: 1rem;
-  margin-bottom: 1rem;
   color: #fdfdfd;
   font-size: 1.1rem;
 }
+.side-bar hr {
+  margin: 0 1rem 2rem 1rem;
+  height: 1px;
+  background: #fdfdfd;;
+  border: none;
+}
+.side-bar li {
+  display: flex;
+  flex-direction: column;
+}
 .side-bar p {
-  padding: 10px 0;
   overflow-wrap: break-word;
   color: rgb(255, 255, 255);
   font-size: 1.1rem;
+  text-align: left;
+}
+.side-bar caption {
+  color: white;
+  overflow-wrap: break-word;
+  text-align: left;
 }
 .side-bar ul {
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  gap: 2rem;
 }
 
 .side-bar a {
@@ -121,14 +141,14 @@ h1 {
 
 /* CHAT PAGE */
 .chat-page {
-  background: #c0c9e5;
+  background: #ddddf7;
   background-repeat: no-repeat;
   justify-content: flex-end;
   height: 89vh;
-  width: 70vw;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  flex-grow: 1;
 }
 
 /* MESSAGE AREA*/
@@ -158,11 +178,11 @@ h1 {
 .message {
   width: fit-content;
   max-width: 40%;
-  background: #e63947cb;
+  background: #ffffff;
   padding: 0.7rem 1rem;
   padding-bottom: 0.8rem;
-  color: rgb(228, 228, 228);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0);
+  color: #6b6868;
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.144);
   overflow-wrap: break-word;
   border-radius: 10px;
   border-top-left-radius: 2px;
@@ -170,6 +190,7 @@ h1 {
   margin-bottom: 1rem;
   margin-left: 40px;
   animation: fadeIn 0.4s forwards;
+  font-size: 1.1rem;
 }
 
 /* SENT MESSAGES */
@@ -177,11 +198,11 @@ h1 {
   align-self: flex-end;
   width: fit-content;
   max-width: 40%;
-  background: #e63946;
+  background: linear-gradient(#fc3c4c,#f12f40);
   padding: 0.7rem 1rem;
   padding-bottom: 0.8rem;
-  color: rgb(228, 228, 228);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0);
+  color: #fff4f4;
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.144);
   overflow-wrap: break-word;
   border-radius: 10px;
   border-top-right-radius: 2px;
@@ -217,12 +238,14 @@ h1 {
 
 /* MESSAGE INPUT */
 #input-bar {
-  width: 65vw;
+  /* width: 65vw; */
   display: flex;
   flex-direction: row;
   align-content: space-between;
   justify-content: space-between;
   height: 11vh;
+    box-shadow: 80px 77px 6px 80px rgba(0, 0, 0, 0.096);
+
 }
 #input {
   background: #fffcfc;
@@ -231,7 +254,7 @@ h1 {
   font-size: 1rem;
   align-self: center;
   margin-top: 5px;
-  width: 25vw;
+  /* width: 25vw; */
 }
 #input::placeholder {
   color: #00000081;
@@ -241,7 +264,7 @@ h1 {
 }
 #send-btn {
   align-self: center;
-  background: #e63946;
+  background: linear-gradient(#ff3f4f,#bb202d);
   border: none;
   border-radius: 100%;
   cursor: pointer;
@@ -250,6 +273,7 @@ h1 {
   padding: 0.8rem;
   transition: all 0.2s;
   margin-top: 2px;
+  margin-right: 3rem;
 }
 
 #send-btn:active {
@@ -285,7 +309,7 @@ h1 {
     padding: 0.6rem;
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   body {
     flex-direction: column;
     overflow-x: hidden;
@@ -300,20 +324,13 @@ h1 {
     margin-left: 1rem;
     margin-bottom: 0.75rem;
   }
-  .side-bar p {
-    padding: 10px 0;
-  }
-
-  .chat-page {
-    width: 100vw;
-    height: 77vh;
-  }
+  
+  
   .connection-message {
     padding: 0;
     padding-top: 6rem;
   }
   #input-bar {
-    width: 90vw;
     height: fit-content;
     padding: 5px 0;
   }

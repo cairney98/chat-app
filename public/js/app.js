@@ -71,11 +71,17 @@ socket.on("connect-message", (data) => {
 socket.on("online status", (users) => {
   online.innerHTML = "";
   users.map((user) => {
-    const item = document.createElement("p");
+    const item = document.createElement("li");
+    const name = document.createElement("p");
+    const meta = document.createElement("caption");
     if (user === userName) {
-      item.textContent = user + " (You)";
+      name.innerHTML = "<strong>" + user + "</strong>" + " (You)" ;
+      item.appendChild(name)
     } else {
-      item.textContent = user;
+      name.innerHTML = "<strong>" + user + "</strong>" + "<br/>" ;
+      meta.innerText = "Joined 1min ago";
+      item.appendChild(name)
+      item.appendChild(meta);
     }
 
     online.appendChild(item);
