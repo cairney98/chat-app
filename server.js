@@ -29,33 +29,44 @@ server.listen(port, () => {
 });
 //
 
-// SOCKET.IO
+// ======== SOCKET.IO ======== //
 let users = [];
+let messages = [];
 io.on("connection", (socket) => {
-  socket.on("user joined", (data) => {
+  socket.on("user joined", (username) => {
+    
 
     // update list of online users
-    users.push(data);
+    users.push(username);
 
     // send list of online users to all clients
     io.emit("online status", users);
 
     // only user recieves welcome message
-    socket.emit("connect-message", "Welcome " + data + "!");
+    socket.emit("connect-message", "Welcome " + username + "!");
 
-    // update list of online users
+    // display all messages sent prior to connection
+    socket.emit("message history", messages);
+
+    // remove user when they leave and reset all messages if all users disconnect
     socket.on("disconnect", () => {
-      users = users.filter((user) => user != data);
+      users = users.filter((user) => user != username);
+      setTimeout(() => {
+        if (users.length === 0) {
+          messages = [];
+        }
+      }, 2000);
     });
   });
 
   // send taken usernames to login page
-socket.on("request usernames", () => {
-  socket.emit("usernames", users)
-})
+  socket.on("request usernames", () => {
+    socket.emit("usernames", users);
+  });
 
   // send messages to every other client
   socket.on("chat message", (msg) => {
+    messages.push(msg);
     socket.broadcast.emit("chat message", msg);
   });
 });

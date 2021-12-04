@@ -20,9 +20,9 @@ $(document).ready(function () {
       });
 
       // display messages sent by user
-      const item = $("<li></li>");
-      const text = $("<p></p>").text($("#input").val());
-      const tag = $("<p></p>").text(
+      let item = $("<li></li>");
+      let text = $("<p></p>").text($("#input").val());
+      let tag = $("<p></p>").text(
         "You · " + new Date().toLocaleTimeString().substr(0, 5)
       );
       $("#input").val("");
@@ -37,24 +37,25 @@ $(document).ready(function () {
   });
 });
 
-// recieve and display messages sent by other users
+// recieve and display messages from server
 socket.on("chat message", function (msg) {
-  const item = $("<li></li>");
-  const text = $("<p></p>").text(msg.message);
-  const tag = $("<p></p>").text(msg.username + " · " + msg.time);
+  let item = $("<li></li>");
+  let text = $("<p></p>").text(msg.message);
+  let tag = $("<p></p>").text(msg.username + " · " + msg.time);
   item.addClass("message-container");
   text.addClass("message");
   tag.addClass("message-name");
   item.append(tag);
   item.append(text);
   $("#messages").append(item);
+
   $(".message-container").last()[0].scrollIntoView();
 });
 
 // recieve connection messages
 socket.on("connect-message", (data) => {
-  const item = $("<p></p>").text(data);
-  const name = $("<p></p>").text(data.online);
+  let item = $("<p></p>").text(data);
+  let name = $("<p></p>").text(data.online);
   item.addClass("connection-message");
   $("#messages").append(item);
   $("#online").append(name);
@@ -65,9 +66,9 @@ socket.on("connect-message", (data) => {
 socket.on("online status", (users) => {
   $("#online").html("");
   users.map((user) => {
-    const item = $("<li></li>");
-    const name = $("<p></p>");
-    const meta = $("<caption></caption>");
+    let item = $("<li></li>");
+    let name = $("<p></p>");
+    let meta = $("<caption></caption>");
     if (user === userName) {
       name.html("<strong>" + user + "</strong>" + " (You)");
       item.append(name);
@@ -79,4 +80,28 @@ socket.on("online status", (users) => {
     }
     $("#online").append(item);
   });
+});
+
+socket.on("message history", (messages) => {
+  console.log(messages);
+  messages.map((msg) => {
+    let item = $("<li></li>");
+    let text = $("<p></p>").text(msg.message);
+    let tag = $("<p></p>").text(msg.username + " · " + msg.time);
+    item.addClass("message-container");
+
+    if (msg.username == userName) {
+      text.addClass("sent-message");
+      tag.addClass("sent-name");
+    } else {
+      text.addClass("message");
+      tag.addClass("message-name");
+    }
+    
+    item.append(tag);
+    item.append(text);
+    $("#messages").append(item);
+  });
+
+  // $(".message-container").last()[0].scrollIntoView();
 });
