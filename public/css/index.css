@@ -120,7 +120,6 @@ font-family: "Sansita Swashed";}
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   padding-left: 2rem;
   padding-right: 2rem;
   gap: 2rem;
@@ -128,15 +127,16 @@ font-family: "Sansita Swashed";}
 
 .side-bar a {
   text-decoration: none;
-  margin-left: 1rem;
-  border-radius: 100%;
+  border-radius: 5px;
   background: none;
-  color: rgb(226, 226, 226);
+  border: 1px solid white;
+  color: white;
   transition: 0.1s;
   cursor: pointer;
+  padding: 3px;
 }
 .side-bar a:hover {
-  color: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.233);
 }
 
 /* CHAT PAGE */
@@ -321,10 +321,14 @@ font-family: "Sansita Swashed";}
    
   }
   .side-bar ul {
-    flex-direction: row;
+    display: grid;
+grid-template-columns: 1fr 1fr;
     margin-left: 1rem;
     margin-bottom: 0.75rem;
     flex-wrap: wrap;
+  }
+  .side-bar a {
+    grid-column: span 2;
   }
 
   .connection-message {

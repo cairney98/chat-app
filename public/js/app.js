@@ -1,6 +1,7 @@
 const socket = io();
 
 // extract username from url
+const url = window.location.origin
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const userName = urlParams.get("username");
@@ -83,6 +84,7 @@ socket.on("online status", (users) => {
     }
     $("#online").append(item);
   });
+  $("#online").append($(`<a href=${url} target='_blank'>Add User</a>`));
 });
 
 socket.on("message history", (messages) => {
