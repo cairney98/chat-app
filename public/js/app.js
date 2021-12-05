@@ -69,12 +69,15 @@ socket.on("online status", (users) => {
     let item = $("<li></li>");
     let name = $("<p></p>");
     let meta = $("<caption></caption>");
-    if (user === userName) {
-      name.html("<strong>" + user + "</strong>" + " (You)");
+    if (user.name === userName) {
+      name.html("<strong>" + user.name + "</strong>" + " (You)" + "<br/>");
       item.append(name);
+      item.append(meta);
     } else {
-      name.html("<strong>" + user + "</strong>" + "<br/>");
-      meta.text("Joined 1min ago");
+      name.html("<strong>" + user.name + "</strong>" + "<br/>");
+      meta.text(
+        `Joined ${new Date( new Date().getTime() - user.time).getMinutes()}min ago`
+      );
       item.append(name);
       item.append(meta);
     }
@@ -97,7 +100,7 @@ socket.on("message history", (messages) => {
       text.addClass("message");
       tag.addClass("message-name");
     }
-    
+
     item.append(tag);
     item.append(text);
     $("#messages").append(item);

@@ -34,11 +34,14 @@ let users = [];
 let messages = [];
 io.on("connection", (socket) => {
   socket.on("user joined", (username) => {
-    
-
     // update list of online users
-    users.push(username);
-
+    if (users.some((user) => user.name == username)) {
+    } else {
+      users.push({
+        name: username,
+        time: new Date().getTime(),
+      });
+    }
     // send list of online users to all clients
     io.emit("online status", users);
 
@@ -50,12 +53,13 @@ io.on("connection", (socket) => {
 
     // remove user when they leave and reset all messages if all users disconnect
     socket.on("disconnect", () => {
-      users = users.filter((user) => user != username);
+      users = users.filter((user) => user.name != username);
+
       setTimeout(() => {
         if (users.length === 0) {
           messages = [];
         }
-      }, 2000);
+      }, 1000);
     });
   });
 
