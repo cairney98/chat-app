@@ -32,6 +32,7 @@ server.listen(port, () => {
 // ======== SOCKET.IO ======== //
 let users = [];
 let messages = [];
+let online = false;
 io.on("connection", (socket) => {
   socket.on("user joined", (username) => {
     // update list of online users
@@ -42,6 +43,8 @@ io.on("connection", (socket) => {
         time: new Date().getTime(),
       });
     }
+
+    
     // send list of online users to all clients
     io.emit("online status", users);
 

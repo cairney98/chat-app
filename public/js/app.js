@@ -1,7 +1,7 @@
 const socket = io();
 
 // extract username from url
-const url = window.location.origin
+const url = window.location.origin;
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const userName = urlParams.get("username");
@@ -77,7 +77,9 @@ socket.on("online status", (users) => {
     } else {
       name.html("<strong>" + user.name + "</strong>" + "<br/>");
       meta.text(
-        `Joined ${new Date( new Date().getTime() - user.time).getMinutes()}min ago`
+        `Active ${new Date(
+          new Date().getTime() - user.time
+        ).getMinutes()}min ago`
       );
       item.append(name);
       item.append(meta);
@@ -88,7 +90,6 @@ socket.on("online status", (users) => {
 });
 
 socket.on("message history", (messages) => {
-  console.log(messages);
   messages.map((msg) => {
     let item = $("<li></li>");
     let text = $("<p></p>").text(msg.message);

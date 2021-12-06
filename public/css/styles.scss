@@ -1,4 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Sansita+Swashed:wght@600&display=swap");
+
+$maincol: linear-gradient(#ff3f4f, #bb202d);
+
+body,
+main,
+.login-page,
+#login,
+.side-bar,
+.side-bar header,
+.side-bar li,
+.side-bar ul,
+.chat-page,
+#messages,
+.message-container,
+#input-bar {
+  display: flex;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -12,13 +30,13 @@ html {
   touch-action: manipulation;
 }
 body {
-  font-family: "Nunito";
-  font-weight: 500;
-  display: flex;
+  font: {
+    family: "Nunito";
+    weight: 500;
+  }
   flex-direction: row;
 }
 main {
-  display: flex;
   flex-direction: column;
   margin: 0;
   flex-grow: 1;
@@ -36,18 +54,13 @@ h1 {
 
 /* LOGIN PAGE */
 .login-page {
-  display: flex;
   gap: 10rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(#ff3f4f, #bb202d);
+  background: $maincol;
   color: white;
-}
-
-#login {
-  display: flex;
 }
 
 #username-input {
@@ -81,62 +94,60 @@ h1 {
 
 /* SIDE BAR */
 .side-bar {
-  background: linear-gradient(#fa3c4c, #bb202d);
+  background: $maincol;
   height: 100vh;
-  display: flex;
   flex-direction: column;
   width: fit-content;
 }
-.side-bar header {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 1rem;
-  color: #fdfdfd;
-  font-size: 1.75rem;
-font-family: "Sansita Swashed";}
-.side-bar hr {
-  margin: 0 1rem 2rem 1rem;
-  height: 1px;
-  background: #fdfdfd;
-  border: none;
-}
-.side-bar li {
-  display: flex;
-  flex-direction: column;
-}
-.side-bar p {
-  overflow-wrap: break-word;
-  color: rgb(255, 255, 255);
-  font-size: 1.1rem;
-  text-align: left;
-}
-.side-bar caption {
-  color: white;
-  overflow-wrap: break-word;
-  text-align: left;
-}
-.side-bar ul {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  gap: 2rem;
-}
-
-.side-bar a {
-  text-decoration: none;
-  border-radius: 5px;
-  background: none;
-  border: 1px solid white;
-  color: white;
-  transition: 0.1s;
-  cursor: pointer;
-  padding: 3px;
-}
-.side-bar a:hover {
-  background: rgba(255, 255, 255, 0.233);
+.side-bar {
+  header {
+    flex-direction: row;
+    justify-content: center;
+    padding: 1rem;
+    color: #fdfdfd;
+    font-size: 1.75rem;
+    font-family: "Sansita Swashed";
+  }
+  hr {
+    margin: 0 1rem 2rem 1rem;
+    height: 1px;
+    background: #fdfdfd;
+    border: none;
+  }
+  li {
+    flex-direction: column;
+  }
+  p {
+    overflow-wrap: break-word;
+    color: rgb(255, 255, 255);
+    font-size: 1.1rem;
+    text-align: left;
+  }
+  caption {
+    color: white;
+    overflow-wrap: break-word;
+    text-align: left;
+  }
+  ul {
+    text-align: center;
+    flex-direction: column;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    gap: 2rem;
+  }
+  a {
+    text-decoration: none;
+    border-radius: 5px;
+    background: none;
+    border: 1px solid white;
+    color: white;
+    transition: 0.1s;
+    cursor: pointer;
+    padding: 3px;
+  }
+  a:hover {
+    background: rgba(255, 255, 255, 0.233);
+  }
 }
 
 /* CHAT PAGE */
@@ -145,7 +156,6 @@ font-family: "Sansita Swashed";}
   background-repeat: no-repeat;
   justify-content: flex-end;
   height: 89vh;
-  display: flex;
   flex-direction: column;
   overflow-y: scroll;
   flex-grow: 1;
@@ -153,7 +163,6 @@ font-family: "Sansita Swashed";}
 
 /* MESSAGE AREA*/
 #messages {
-  display: flex;
   flex-direction: column;
   list-style: none;
   height: 80vh;
@@ -162,7 +171,6 @@ font-family: "Sansita Swashed";}
 
 /* MESSAGE LAYOUT */
 .message-container {
-  display: flex;
   flex-direction: column;
   gap: 1px;
   transform: translateY(50%);
@@ -198,7 +206,7 @@ font-family: "Sansita Swashed";}
   align-self: flex-end;
   width: fit-content;
   max-width: 40%;
-  background: linear-gradient(#fc3c4c, #f12f40);
+  background: $maincol;
   padding: 0.7rem 1rem;
   padding-bottom: 0.8rem;
   color: #fff4f4;
@@ -220,6 +228,7 @@ font-family: "Sansita Swashed";}
   color: #5c5c5c;
 }
 
+// MESSAGE ANIMATION
 @keyframes fadeIn {
   100% {
     opacity: 100%;
@@ -238,7 +247,6 @@ font-family: "Sansita Swashed";}
 
 /* MESSAGE INPUT */
 #input-bar {
-  display: flex;
   flex-direction: row;
   align-content: space-between;
   justify-content: space-between;
@@ -263,7 +271,7 @@ font-family: "Sansita Swashed";}
 }
 #send-btn {
   align-self: center;
-  background: linear-gradient(#ff3f4f, #bb202d);
+  background: $maincol;
   border: none;
   border-radius: 100%;
   cursor: pointer;
@@ -275,7 +283,7 @@ font-family: "Sansita Swashed";}
   margin-right: 3rem;
 }
 #send-btn:hover {
-  filter: brightness(130%)
+  filter: brightness(130%);
 }
 #send-btn:active {
   transform: scale(80%);
@@ -303,7 +311,7 @@ font-family: "Sansita Swashed";}
   border: 3px none #ffffff;
 }
 
-/* MOBILE VERSION */
+/* MOBILE LAYOUT */
 @media screen and (max-height: 480px) {
   #send-btn {
     font-size: 0.8rem;
@@ -318,11 +326,10 @@ font-family: "Sansita Swashed";}
   .side-bar {
     width: 100vw;
     height: fit-content;
-   
   }
   .side-bar ul {
     display: grid;
-grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     margin-left: 1rem;
     margin-bottom: 0.75rem;
     flex-wrap: wrap;
